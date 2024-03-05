@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback Form</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&family=Poppins:ital,wght@0,300;0,400;1,100&family=Work+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <div class="top-border fixed top-0 h-1 w-full z-20"></div>
+</head>
+<body>
+	<style>
+
+		
+*{
+    font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Work Sans', sans-serif;
+}
+body{
+    background-image: url("https://c1.wallpaperflare.com/preview/427/745/192/notebook-natural-laptop-macbook.jpg");
+    image-rendering: optimizeQuality;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+html{
+    box-sizing: border-box;
+    font-family: 'Open sans' ,  sans-serif;
+}
+.top-border{
+  background : linear-gradient(90deg,#ef4444,#f97316,#f59e0b,#eab308,#84cc16,#22c55e,#06b6d4,#8b5cf6,#c026d3);
+  background-size:  400%;
+ 
+  animation: animate 25s ease infinite;
+}
+
+.top-border::before, .top-border::after {
+    background : linear-gradient(90deg,#ef4444,#f97316,#f59e0b,#eab308,#84cc16,#22c55e,#06b6d4,#8b5cf6,#c026d3);
+    background-size:  400%;
+   
+    animation: animate 20s ease infinite;
+   
+
+}
+.w-full {
+    width: 100%;
+}
+.h-1 {
+    height: 0.25rem;
+}
+.z-20 {
+    z-index: 20;
+}
+.top-0 {
+    top: 0;
+}
+.fixed {
+    position: fixed;
+}
+@keyframes animate {
+    0%   {background-position: 0 0;}
+    50%  {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+  }
+  
+.bg{
+    background-color: white;
+    width: 500px;
+    height: 800px;
+    border-radius: 20px;
+}
+h2{
+    text-align: center;
+   font-size: 45px;
+   padding-top: 50px;
+}
+
+form{
+    margin-top:  100px;
+    margin-left: 100px;
+}
+span{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    
+}
+#name{
+    font-size: large;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    padding-right: 120px;
+	padding-top: 9px;
+    transition: all 200ms;
+      transition-delay: border 1s ;
+}
+#name:hover{
+    outline: none;
+    
+    transform: translatey(-0.2em) ;
+    box-shadow: 2px 0.5px  10px rgba(245, 245, 245, 0.552);
+    cursor: pointer;
+}
+#email{
+    font-size: large;
+    outline: none;
+    border: 1px dotted transparent;
+    border-bottom: 2px solid black;
+    padding-right: 120px;
+	padding-left: 2px;
+	padding-top: 9px;
+    transition: all 200ms;
+      transition-delay: border 1s ;
+}
+#email:hover{
+    outline: none;
+    
+    transform: translatey(-0.2em) ;
+    box-shadow: 2px 0.5px  10px rgba(245, 245, 245, 0.552);
+    cursor: pointer;
+}
+#message{
+    font-size: large;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    padding-right: 120px;
+    transition: all 200ms;
+      transition-delay: border 1s ;
+      resize: none;
+}
+#message:hover{
+    outline: none;
+	background-color: infinite(90deg,red,blue,green);
+    animation: infinite backwards 5s;
+    transform: translatey(-0.2em) ;
+    box-shadow: 2px 0.5px  10px rgba(245, 245, 245, 0.552);
+    cursor: pointer;
+    
+}
+button{
+    border-radius: 20px;
+   margin-top: 25px;
+    font-size: large;
+	margin-right: 50px;
+	margin-left: -4px;
+    font-weight: 600px;
+   padding: 5px 135px;
+   color: white;
+   background-color: black;
+   transition: all 200ms;
+   transition-delay: border 1s ;
+   font-family: 'Open sans' ,  sans-serif;
+}
+button:hover{
+    color: white;
+   
+  transform: translatey(-0.2em) ;
+    box-shadow: 2px 0.5px  10px rgba(245, 245, 245, 0.552);
+}
+label{
+	font-size: 20px;
+}
+	</style>
+	<main class="bg">
+	<div class="container">
+		<h2>Feedback Form</h2>
+		<form action="" id="feedForm">
+			<label for="name">Name</label><br><br>
+			<input type="text" id="name" name="name" required><br><br><br>
+			<label for="email">Email</label><br><br>
+			<input type="email" id="email" name="email" required><br><br><br>
+			<label for="message">Message</label><br><br>
+			<textarea id="message" name="message" required></textarea> <br><br><br>
+			<button type="submit">Submit</button>
+            <script  src ="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+            <script src="feed.js"></script>
+		</form>
+	</div>
+</main>
+</body>
+</html>

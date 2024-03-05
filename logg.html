@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login + Firebase Database</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&family=Poppins:ital,wght@0,300;0,400;1,100&family=Work+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <div class="top-border fixed top-0 h-1 w-full z-20"></div>
+
+</head>
+
+<body>
+    <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Work Sans', sans-serif;
+        }
+        body {
+            background-image: url("https://c1.wallpaperflare.com/preview/427/745/192/notebook-natural-laptop-macbook.jpg");
+            image-rendering: optimizeQuality;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        html {
+            box-sizing: border-box;
+            font-family: 'Open sans', sans-serif;
+        }
+
+        .top-border {
+            background: linear-gradient(90deg, #ef4444, #f97316, #f59e0b, #eab308, #84cc16, #22c55e, #06b6d4, #8b5cf6, #c026d3);
+            background-size: 400%;
+
+            animation: animate 25s ease infinite;
+        }
+
+        .top-border::before,
+        .top-border::after {
+            background: linear-gradient(90deg, #ef4444, #f97316, #f59e0b, #eab308, #84cc16, #22c55e, #06b6d4, #8b5cf6, #c026d3);
+            background-size: 400%;
+
+            animation: animate 20s ease infinite;
+
+
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .h-1 {
+            height: 0.25rem;
+        }
+
+        .z-20 {
+            z-index: 20;
+        }
+
+        .top-0 {
+            top: 0;
+        }
+
+        .fixed {
+            position: fixed;
+        }
+
+        @keyframes animate {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+
+        #form_container {
+            background-color: white;
+            width: 500px;
+            height: 800px;
+            border-radius: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 45px;
+            padding-top: 50px;
+        }
+
+        #form_content_inner_container {
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+
+        }
+
+        #full_name {
+            font-size: large;
+            border: none;
+            border-bottom: 2px solid black;
+            padding-right: 100px;
+            transition: all 200ms;
+            transition-delay: border 1s;
+            outline: none;
+        }
+
+        #full_name:hover {
+           
+            margin-top: 9px;
+           
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+            cursor: pointer;
+            outline: none;
+        }
+
+        #password {
+            font-size: large;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid black;
+            padding-right: 100px;
+            transition: all 200ms;
+            transition-delay: border 1s;
+        }
+
+        #password:hover {
+            outline: none;
+            
+            margin-top: 9px;
+          
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+            cursor: pointer;
+        }
+
+        #email {
+            font-size: large;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid black;
+            padding-right: 100px;
+            transition: all 200ms;
+            transition-delay: border 1s;
+        }
+
+        #email:hover {
+            outline: none;
+            
+            margin-top: 9px;
+           
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+            cursor: pointer;
+        }
+
+        #mobile_no {
+            font-size: large;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid black;
+            padding-right: 100px;
+            transition: all 200ms;
+            transition-delay: border 1s;
+        }
+
+        #mobile_no:hover {
+            outline: none;
+            
+            margin-top: 9px;
+           
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+            cursor: pointer;
+        }
+
+        #roll_no {
+            font-size: large;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid black;
+            padding-right: 100px;
+            transition: all 200ms;
+            transition-delay: border 1s;
+        }
+
+        #roll_no:hover {
+            outline: none;
+           
+            margin-top: 9px;
+            
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+            cursor: pointer;
+        }
+
+        button {
+            border-radius: 20px;
+            margin-top: 25px;
+            font-size: large;
+            font-weight: 600px;
+            padding: 5px 125px;
+            color: white;
+            background-color: black;
+            transition: all 200ms;
+            transition-delay: border 1s;
+            font-family: 'Open sans', sans-serif;
+        }
+
+        button:hover {
+            color: white;
+
+
+            transform: translatey(-0.2em);
+            box-shadow: 2px 0.5px 10px rgba(245, 245, 245, 0.552);
+        }
+
+        .regis {
+            margin-left: 0;
+            padding-right: 130px;
+        }
+
+        .or {
+
+            margin-right: 0;
+            font-weight: 100;
+            margin-left: 32%;
+        }
+
+        .log {
+            padding-right: 137px;
+            padding-left: 137px;
+            margin-top: 0;
+        }
+        #no{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+
+    <div id="content_container">
+        <div id="form_container">
+            <div id="form_header_container">
+                <h2 id="form_header">Signup page</h2>
+            </div>
+            <div id="form_content_container">
+                <div id="form_content_inner_container">
+
+
+                    <input type="text" id="full_name" placeholder="Full name"><br><br><br>
+                    <input type="email" id="email" placeholder="Email"><br><br><br>
+                    <input type="password" id="password" placeholder="New Password"><br><br><br>
+
+                    <input type="text" id="mobile_no" placeholder="Mobile No"><br><br><br>
+                    <input type="text" id="roll_no" placeholder="Roll no "><br><br><br>
+
+                    <div id="button_container">
+                        <button onclick="register()" class="regis">Register</button><br><br>
+                       
+                       
+                        <h5 class="or">----OR----</h5><br>
+                        <button  class="log"> <a href="./loggg.html"  id="no"> Login </a></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+<script src="logg.js"></script>
+
+</html>
